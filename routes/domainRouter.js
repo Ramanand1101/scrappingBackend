@@ -3,9 +3,9 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const { domainModel } = require("../models/domainModel");
 
-const ing = express.Router();
+const scrapeRouter = express.Router();
 
-router.post("/scrape", async (req, res) => {
+scrapeRouter.post("/scrape", async (req, res) => {
   try {
     const { url } = req.body;
     if (!url) {
@@ -59,7 +59,7 @@ router.post("/scrape", async (req, res) => {
   }
 });
 
-router.get("/all", async (req, res) => {
+scrapeRouter.get("/all", async (req, res) => {
   try {
     const allDomains = await domainModel.find();
 
@@ -71,7 +71,7 @@ router.get("/all", async (req, res) => {
   }
 });
 
-router.patch("/update", async (req, res) => {
+scrapeRouter.patch("/update", async (req, res) => {
   try {
     const { id, favorite } = req.body;
     const updatedData = await domainModel.findByIdAndUpdate(
@@ -92,7 +92,7 @@ router.patch("/update", async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", async (req, res) => {
+scrapeRouter.delete("/delete/:id", async (req, res) => {
   try {
     const pId = req.params.id;
     const domainExists = await domainModel.findByIdAndDelete({_id:pId});
@@ -109,4 +109,4 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-module.exports = { router };
+module.exports = {scrapeRouter };

@@ -1,3 +1,7 @@
+/* ====================================== Don't touch this baseURL========================================= */
+const baseURl="http://localhost:3000"
+/* ====================================== Don't touch this baseURL========================================= */
+
 const form = document.getElementById("url-form");
 const websiteUrlInput = document.getElementById("website-url");
 
@@ -6,7 +10,7 @@ form.addEventListener("submit", (e) => {
 
   const websiteUrl = websiteUrlInput.value;
 
-  fetch("http://localhost:8000/info/scrape", {
+  fetch(`${baseURl}/info/scrape`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +33,7 @@ form.addEventListener("submit", (e) => {
 
 let table = document.querySelector("#table");
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://localhost:8000/info/all", {
+  fetch(`${baseURl}/info/all`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -76,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
           location.reload();
       });
         td6.append(removeButton,addToFavButton)
-
         tr.append(td1, td2, td3, td4, td5, td6);
         table.append(tr);
       });
@@ -92,7 +95,7 @@ function arrayToTdString(arr, limit) {
 }
 // Create a function to handle updating the "favorite" status
 function updateFavoriteStatus(id, isFavorite) {
-  fetch("http://localhost:8000/info/update", {
+  fetch(`${baseURl}/info/update`, {
       method: "PATCH",
       headers: {
           "Content-Type": "application/json",
@@ -108,7 +111,7 @@ function updateFavoriteStatus(id, isFavorite) {
 
 // Create function to delete a lisiting.
 function deleteListing(id){
-  fetch(`http://localhost:8000/info/delete/${id}`, {
+  fetch(`${baseURl}/info/delete/${id}`, {
       method: "DELETE",
   })
   .then((response) => response.json())
