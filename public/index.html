@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpage Scraper</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Get Website Info</h1>
+      <form id="url-form">
+        <input
+          type="text"
+          id="website-url"
+          placeholder="Enter a website URL"
+          required
+        />
+        <button type="submit" id="submit-button">Submit</button>
+      </form>
+      <div id="table-container">
+        <table id="table">
+          <tr>
+            <th>Domain Name</th>
+            <th>Word Count</th>
+            <th>Favourite</th>
+            <th>Web Links</th>
+            <th>Media Links</th>
+            <th>Actions</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./js/index.js"></script>
